@@ -637,6 +637,115 @@ a.sh filename.sh
 b.bash filename.sh
 c. ./filename.sh  (but should give execute permission to file)
 
+what is Bash?
+Shell is a program that accept commands from a user and communicates with the
+operating system
+
+Bash means: Bourne Again Shell
+
+when you type:
+pwd
+ls
+mkdir demo
+you are interacting with a shell.
+
+Check the current shell:
+echo $SHELL
+output: /bin/bash
+
+check bash version:
+bash --version
+
+what is Bash scripting?
+instead of manually executing 10 Linux commands every day, we can put those commands into a file
+and execute them together
+For Example:
+mkdir backup
+cp import.txt backup/
+date
+df -h
+
+Save those commands inside a .sh file, and it becomes a simple Bash script
+
+Note:
+This is extremely useful in DevOps, Cloud admins, CI/CD, server management, monotoring, backups and
+deployments
+
+Hands-on 1 - First Bash Script
+Create your working directory
+mkdir bash-training
+cd bash-training
+
+nano hello.sh
+#!/bin/bash
+
+echo "Hello Students"
+echo "Welcome to Linux Bash Scripting"
+echo "Today we are learning automation"
+
+save the file : ctrl+x, yes and enter
+
+Run: bash hello.sh
+
+3.Understanding #!/bin/bash
+This "#!/bin/bash" is called shebang
+it tells linux which interpreter should execute the script
+
+#!/bin/bash --> Use Bash to execute this file
+
+Hands-on 2 - Make Script Executable
+check permissions: ls -l hello.sh
+
+you can see there is no execute permission
+add : chmod +x hello.sh
+now execute: ./hello.sh
+
+4.Comments:
+Comments explain code and aren't executed.
+# This is a comment
+echo "Hello"
+
+Example:
+#!/bin/bash
+# Author: Siva
+# Purpose: Bash training demo
+echo "Bash Training"
+
+5.Variables:
+Stores a value.
+
+name="Siva"
+course="Bash Scripting"
+
+Wrong:
+name = "Siva"
+Correct:
+name="siva"
+
+Both does not permit spaces around=in variable assignment
+
+Access a variable using $:
+echo $name
+
+prefer braces when embedding variables:
+echo "${name}"
+
+Hands-on 3 - variables:
+create: nano variables.sh
+add:
+#!/bin/bash
+
+name="Siva"
+course="Linux Bash Scripting"
+duration="10 hours"
+
+echo "Trainer: $name"
+echo "Course: $course"
+echo "Duration: $duration"
+
+Run: chmod +x variables.sh
+     ./variables.sh
+
 
 
 
