@@ -746,6 +746,167 @@ echo "Duration: $duration"
 Run: chmod +x variables.sh
      ./variables.sh
 
+6.User Input-read
+static variables are hardcorded:
+name="shiva"
+Note: sometimes we want the user to provide the value
+
+Use:
+read name
+
+Better:
+read -p "Enter your name: " name
+
+Hands-on 4 - Interactive Script
+--------------------------------
+nano student.sh
+
+add:
+#!/bin/bash
+read -p "Enter your name: " name
+read -p "Enter your course: " course
+
+echo "-------------------------"
+echo "Student Name : $name"
+echo "Course 	   : $course"
+echo "-------------------------"
+
+Save file: ctrl+x, y and enter
+Run: chmod +x student.sh
+     ./student.sh
+Enter your name: shiva
+Coure          : Linux
+
+7.Numbers and Arthimetic:
+-------------------------
+bash variables values are generally treated as strings unless you use an arithmetic
+context.
+Example:
+a=10
+b=20
+
+calculate:
+sum=$((a + b))
+
+Then:
+echo "$sum"
+
+Common operators:
+-----------------
+Operator		Meaning
++				Addition
+-				Substraction
+*				Multiplication
+/				division
+%				Reminder
+
+Hands-on 5 - calculator:
+------------------------
+nano calculator.sh
+Add:
+#!/bin/bash
+
+read -p "Enter first number: " num1
+read -p "Enter second number: " num2
+
+sum=$((num1 + num2))
+difference=$((num1 - num2))
+product=$((num1 * num2))
+
+echo "Addition : $sum"
+echo "Substraction : $difference"
+echo "Multiplication : $product"
+
+Run:
+chmod +x calculator.sh
+./calulator.sh
+
+Enter first number: 20
+Enter second number: 10
+
+Addition : 30
+Substraction : 10
+Multiplication : 200
+
+8.Command Substitution:
+-----------------------
+This is one of the most useful Bash concepts for DevOPs
+
+suppose you run: date
+Instead of simply displaying it, we can capture its Output:
+current_date=$(date)
+
+Then:
+echo "$current_date"
+
+Syntax:
+variable=$(command)
+Examples:
+hostname=$(hostname)
+user=$(whoami)
+kernel=$(uname -r)
+
+Hands-on 6 - Server information Script:
+----------------------------------------
+create: nano server-info.sh
+Add:
+#!/bin/bash
+hostname=$(hostname)
+user=$(whoami)
+kernel=$(uname -r)
+current_date=$(date)
+uptime_info=$(uptime -p)
+
+echo "========================="
+echo "     SERVER INFORMATION"
+echo "========================="
+echo "Hostname : $hostname"
+echo "User : $user"
+echo "Kernel : $kernel"
+echo "Date : $current_date"
+echo "Uptime : $uptime_info"
+echo "======================="
+
+Run:
+chmod +x server-info.sh
+./server-info.sh
+
+This is your first practical devops
+
+9.Special Variables
+-------------------
+Bash automatically provides special variables
+Create : nano arguments.sh
+Add:
+#!/bin/bash
+
+echo "Script Name : $0"
+echo "First Argument : $1"
+echo "Second Argument : $2"
+echo "Total Argument : $#"
+echo "All Arguments : $@"
+
+Run:
+chmod +x arguments.sh
+./arguments.sh Shiva DevOps
+
+Note: you should see values corresponding to the script and supplied arguments
+Important variables:
+--------------------
+Variable		Meaning
+$0				Script name
+$1				First argument
+$2				Second argument
+$#				Number of arguments
+$@				All arguments
+$?				Exit status of previous command
+$$				Current shell/process PID (Process Identifier)
+
+
+
+
+
+
 
 
 
